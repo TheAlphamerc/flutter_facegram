@@ -4,10 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 class ProfilePage extends StatelessWidget {
   final List<String> imageList = [
     "https://assets.vogue.com/photos/59a057346bc89b160b6f8ddf/1:1/w_2540,h_2540,c_limit/square-selena-gomez-celebrity-style-1.jpg",
+    "https://pyxis.nymag.com/v1/imgs/481/076/7a64958609de2655614cda48240d2aed56-23-selena-gomez.rsquare.w1200.jpg",
     "https://cdn.cliqueinc.com/posts/281075/selena-gomez-affordable-swimsuit-281075-1562185624865-square.700x0c.jpg",
     "https://cdn.cliqueinc.com/posts/279514/selena-gomez-swimsuit-trends-279514-1556222190787-square.700x0c.jpg",
     "https://www.wmagazine.com/wp-content/uploads/2018/09/13/5b9a888cf4081b4d8029b373_GettyImages-1027411906.jpg?fit=3069%2C2455",
-    "https://pyxis.nymag.com/v1/imgs/481/076/7a64958609de2655614cda48240d2aed56-23-selena-gomez.rsquare.w1200.jpg",
+    "https://media.glamour.com/photos/5e19f2518782f70008612686/1:1/w_1665,h_1665,c_limit/selena-gomez.jpg",
+    "https://www4.pictures.stylebistro.com/bg/Selena+Gomez+Long+Hairstyles+Long+Wavy+Cut+Q8IHsb8Qvugl.jpg",
     "https://pyxis.nymag.com/v1/imgs/a3a/cd2/0c1774f43b965c395c90fcac4cfa7a14ce-selena-gomez.rsquare.w1200.jpg"
   ];
   Widget _profileCard(context) {
@@ -126,7 +128,7 @@ class ProfilePage extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(5)),
               image: DecorationImage(
                 image: NetworkImage(
-                    imageList[index%4]),
+                    imageList[index%8]),
                 fit: BoxFit.cover,
               ),
             ),
