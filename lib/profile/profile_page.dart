@@ -13,16 +13,37 @@ class ProfilePage extends StatelessWidget {
     "https://pyxis.nymag.com/v1/imgs/a3a/cd2/0c1774f43b965c395c90fcac4cfa7a14ce-selena-gomez.rsquare.w1200.jpg"
   ];
   Widget _profileCard(context) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            CircleAvatar(
-              radius: 60,
-              backgroundImage: NetworkImage(
-                  "https://i.ytimg.com/vi/zlJDTxahav0/maxresdefault.jpg"),
+            Hero(
+              tag: Key(
+                  "https://www4.pictures.stylebistro.com/bg/Selena+Gomez+Long+Hairstyles+Long+Wavy+Cut+Q8IHsb8Qvugl.jpg"),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(60)),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          blurRadius: 15,
+                          color: Theme.of(context)
+                              .textTheme
+                              .headline1
+                              .color
+                              .withOpacity(.5),
+                          offset: Offset(2, 3),
+                          spreadRadius: 1)
+                    ]),
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: NetworkImage(
+                      // "https://i.ytimg.com/vi/zlJDTxahav0/maxresdefault.jpg"),
+                      "https://www4.pictures.stylebistro.com/bg/Selena+Gomez+Long+Hairstyles+Long+Wavy+Cut+Q8IHsb8Qvugl.jpg"),
+                ),
+              ),
             ),
             SizedBox(width: 30),
             Expanded(
@@ -34,7 +55,7 @@ class ProfilePage extends StatelessWidget {
                     style: GoogleFonts.charm(
                         fontSize: 30,
                         fontWeight: FontWeight.w800,
-                        color: Colors.grey.shade800),
+                        color: theme.textTheme.headline1.color),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +94,7 @@ class ProfilePage extends StatelessWidget {
             Text(
               "#Spread-Love #Music",
               style: TextStyle(
-                  color: Colors.black87,
+                  color: theme.textTheme.bodyText1.color,
                   height: 1.3,
                   fontWeight: FontWeight.w600),
             ),
@@ -84,6 +105,8 @@ class ProfilePage extends StatelessWidget {
                 child: RaisedButton(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   onPressed: () {},
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey)),
                   color: Colors.black54,
                   textColor: Colors.white,
                   child: Text("Follow"),
@@ -95,7 +118,7 @@ class ProfilePage extends StatelessWidget {
         SizedBox(height: 30),
         Text(
           "Singer,actor, musician Music can change the world\nLet Music embrace you",
-          style: TextStyle(color: Colors.grey.shade700, height: 1.3),
+          style: TextStyle(color: theme.textTheme.bodyText1.color, height: 1.3),
         ),
       ],
     );
@@ -103,8 +126,11 @@ class ProfilePage extends StatelessWidget {
 
   Widget _postButton(context) {
     return OutlineButton(
-      onPressed: null,
-      borderSide: BorderSide(),
+      onPressed: () {},
+      borderSide: BorderSide(
+        color: Theme.of(context).textTheme.headline1.color.withOpacity(.5),
+      ),
+      textColor: Theme.of(context).textTheme.headline1.color.withOpacity(.5),
       child: Center(
         child: Text("POSTS", style: TextStyle(fontSize: 18)),
       ),
@@ -121,14 +147,14 @@ class ProfilePage extends StatelessWidget {
       itemCount: 12,
       itemBuilder: (context, index) {
         return Card(
+          color: Theme.of(context).backgroundColor,
           child: Container(
             height: 100,
             width: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
               image: DecorationImage(
-                image: NetworkImage(
-                    imageList[index%8]),
+                image: NetworkImage(imageList[index % 8]),
                 fit: BoxFit.cover,
               ),
             ),
@@ -140,7 +166,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 16),

@@ -2,8 +2,23 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+import '../main.dart';
+
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool darkThemeEnabled;
+  @override
+  void initState() {
+    super.initState();
+    darkThemeEnabled = false;
+  }
+
   Widget _carousel(context) {
     return CarouselSlider(
       items: [
@@ -23,37 +38,53 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _card(context, {String path}) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(40))),
-      child: Container(
-        width: MediaQuery.of(context).size.width * .8,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(40)),
-            color: Colors.white70,
-            image:
-                DecorationImage(image: NetworkImage(path), fit: BoxFit.cover)),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
+        elevation: 5,
+        color: Theme.of(context).backgroundColor,
+        shadowColor:
+            Theme.of(context).textTheme.headline1.color.withOpacity(.5),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(40))),
+        child: Hero(
+          tag: Key(path),
+          child: Container(
+            width: MediaQuery.of(context).size.width * .8,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(40)),
+                color: Colors.white70,
+                image: DecorationImage(
+                    image: NetworkImage(path), fit: BoxFit.cover)),
+          ),
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Color(0xfffafafa),
+      backgroundColor: theme.backgroundColor,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.only(top: 20),
           child: Column(
             children: <Widget>[
               Container(
-                width: MediaQuery.of(context).size.width - 40,
-                alignment: Alignment.centerRight,
-                child: Icon(
-                  Icons.menu,
-                  size: 50,
-                ),
-              ),
+                  width: MediaQuery.of(context).size.width - 40,
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    onPressed: () {
+                      darkThemeEnabled = !darkThemeEnabled;
+                      bloc.changeTheme(darkThemeEnabled);
+                    },
+                    icon: Icon(
+                      Icons.menu,
+                      size: 50,
+                    ),
+                  )),
               SizedBox(height: 20),
               _carousel(context),
               SizedBox(height: 20),
@@ -65,7 +96,7 @@ class HomePage extends StatelessWidget {
                     style: GoogleFonts.charm(
                         fontSize: 30,
                         fontWeight: FontWeight.w800,
-                        color: Colors.grey.shade600),
+                        color: theme.textTheme.headline1.color),
                   )
                 ],
               ),
@@ -81,13 +112,14 @@ class HomePage extends StatelessWidget {
                         Text(
                           "Singer,actor, musician\nMusic can change the world\nLet Music embrace you",
                           style: TextStyle(
-                              color: Colors.grey.shade700, height: 1.3),
+                              color: theme.textTheme.bodyText1.color,
+                              height: 1.3),
                         ),
                         SizedBox(height: 12),
                         Text(
                           "#Spread-Love #Music",
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: theme.textTheme.bodyText1.color,
                               height: 1.3,
                               fontWeight: FontWeight.w500),
                         )
@@ -97,22 +129,33 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         Text("2.2 M",
                             style: TextStyle(
-                                fontSize: 18, color: Colors.grey.shade600)),
+                                fontSize: 18,
+                                color: theme.textTheme.headline1.color)),
                         Text("Followers",
                             style: TextStyle(
-                                fontSize: 16, color: Colors.grey.shade600)),
+                                fontSize: 16,
+                                color: theme.textTheme.headline1.color)),
                         SizedBox(height: 20),
                         Text("2003",
                             style: TextStyle(
-                                fontSize: 18, color: Colors.grey.shade600)),
+                                fontSize: 18,
+                                color: theme.textTheme.headline1.color)),
                         Text("Post",
                             style: TextStyle(
-                                fontSize: 16, color: Colors.grey.shade600)),
-                        RaisedButton(
-                          onPressed: () {},
-                          color: Colors.black54,
-                          textColor: Colors.white,
-                          child: Text("Follow"),
+                                fontSize: 16,
+                                color: theme.textTheme.headline1.color)),
+                        SizedBox(height: 10),
+                        SizedBox(
+                          height: 30,
+                          child: RaisedButton(
+                            onPressed: () {},
+                            color: Colors.black45,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.grey)
+                            ),
+                            textColor: Colors.white,
+                            child: Text("Follow"),
+                          ),
                         )
                       ],
                     ),
