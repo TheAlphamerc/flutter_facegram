@@ -1,16 +1,29 @@
-# flutter_facegram
+# Facegram App
 
-A new Flutter project.
+Facegram app built in flutter framework. 
 
-## Getting Started
+## Feature
+- [x] Home page
+- [x] Profile page
+- [x] Dual theme (Light/Dark)
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+Home page                      | Profile Page
+:-------------------------:|:-------------------------:
+![](https://github.com/TheAlphamerc/flutter_facegram/blob/master/screenshots/screenshot_1.jpg?raw=true) |![](https://github.com/TheAlphamerc/flutter_facegram/blob/master/screenshots/screnshot_2.jpg?raw=true)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Created & Maintained By
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Sonu Sharma](https://github.com/TheAlphamerc) ([Twitter](https://www.twitter.com/TheAlphamerc)) ([Youtube](https://www.youtube.com/user/sonusharma045sonu/)) ([Insta](https://www.instagram.com/_sonu_sharma__)) ([Dev.to](https://dev.to/thealphamerc))
+  ![Twitter Follow](https://img.shields.io/twitter/follow/thealphamerc?style=social) 
+
+> If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> * [PayPal](https://www.paypal.me/TheAlphamerc/)
+
+> You can also nominate me for Github Star developer program https://stars.github.com/nominate
+
+## Visitors Count
+
+<img align="left" src = "https://profile-counter.glitch.me/flutter_facegram/count.svg" alt ="Loading">
